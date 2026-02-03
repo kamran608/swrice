@@ -41,16 +41,16 @@ jobs:
         
     - name: Deploy to server
       run: |
-        # Try deployment with enhanced SSH options
-        rsync -avz --delete \
+        # Deploy only wp-content folder to preserve WordPress core files
+        rsync -avz \
           -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=30 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
           --exclude='.git' \
           --exclude='.github' \
           --exclude='README.md' \
           --exclude='.gitignore' \
           --timeout=300 \
-          ./ \
-          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
+          ./wp-content/ \
+          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/wp-content/
           
     - name: Deployment Success
       run: |
