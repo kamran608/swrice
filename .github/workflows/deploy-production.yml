@@ -3,11 +3,16 @@ name: Deploy to Production Server
 on:
   push:
     branches: [ production ]
+  pull_request:
+    branches: [ production ]
+    types: [ closed ]
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Only run if it's a push to production OR a merged PR to production
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     
     steps:
     - name: Checkout code
@@ -16,16 +21,18 @@ jobs:
     - name: Setup SSH
       run: |
         mkdir -p ~/.ssh
-        # Write SSH private key with proper formatting
-        cat > ~/.ssh/id_ed25519 << 'EOF'
-        ${{ secrets.SSH_PRIVATE_KEY }}
-        EOF
-        chmod 600 ~/.ssh/id_ed25519
         chmod 700 ~/.ssh
+        # Write SSH private key using base64 decode approach
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/id_ed25519 2>/dev/null || echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
         # Test SSH key format
-        ssh-keygen -l -f ~/.ssh/id_ed25519 || echo "SSH key format issue detected"
-        # Add host to known_hosts or use StrictHostKeyChecking=no
+        echo "Testing SSH key format..."
+        ssh-keygen -l -f ~/.ssh/id_ed25519 && echo "✅ SSH key is valid" || echo "❌ SSH key format issue detected"
+        # Add host to known_hosts
         ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || echo "Warning: ssh-keyscan failed, using StrictHostKeyChecking=no"
+        # Test SSH connection
+        echo "Testing SSH connection..."
+        ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o ConnectTimeout=10 -o BatchMode=yes ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'SSH connection successful'" || echo "SSH connection failed"
         
     - name: Test network connectivity
       run: |
