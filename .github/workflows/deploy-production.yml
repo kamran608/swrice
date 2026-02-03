@@ -16,23 +16,26 @@ jobs:
     - name: Setup SSH
       run: |
         mkdir -p ~/.ssh
-        printf "%s\n" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
+        chmod 700 ~/.ssh
         ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || echo "Warning: ssh-keyscan failed, using StrictHostKeyChecking=no"
+        # Test SSH key format
+        ssh-keygen -l -f ~/.ssh/id_ed25519 || echo "SSH key format issue detected"
         
-    - name: Deploy wp-content to server
+    - name: Deploy to server
       run: |
         rsync -avz --delete \
-          -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+          -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
           --exclude='.git' \
           --exclude='.github' \
           --exclude='README.md' \
           --exclude='.gitignore' \
-          ./wp-content/ \
-          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/wp-content/
+          ./ \
+          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
           
     - name: Deployment Success
       run: |
         echo "🚀 Deployment to swrice.com completed successfully!"
-        echo "📁 Files synced to: ${{ secrets.DEPLOY_PATH }}/wp-content"
+        echo "📁 Files synced to: ${{ secrets.DEPLOY_PATH }}/"
         echo "🌐 Your WordPress site should now be updated at swrice.com"
