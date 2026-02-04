@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Plugin Name: Swrice functionality Deployment test
+ * Plugin Name: Swrice functionality - D
  * Plugin URI: www.swrice.com
  * Description: This add-on help to send mail to admin after order complete
  * Author: swrice
@@ -118,5 +118,6 @@ class Swrice_Functionality {
         } );
     }
 }
+
 
 return Swrice_Functionality::instance();
