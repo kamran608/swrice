@@ -29,8 +29,8 @@ jobs:
     - name: Deploy wp-content changes to server
       run: |
         echo "🚀 Deploying only wp-content changes to server..."
-        # Use rsync with --update flag to only sync newer/changed files
-        rsync -avzu --progress \
+        # Use rsync with --delete flag to sync and remove deleted files
+        rsync -avz --delete --progress \
           -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
           --exclude='.git*' \
           --exclude='*.log' \
@@ -43,6 +43,6 @@ jobs:
     - name: Deployment Success
       run: |
         echo "🎉 Deployment to swrice.com completed successfully!"
-        echo "📁 Only changed files in wp-content were synced"
+        echo "📁 wp-content synced with deleted files removed from server"
         echo "🌐 Your WordPress site is now updated at swrice.com"
         echo "✅ WordPress core files on server remain untouched"
