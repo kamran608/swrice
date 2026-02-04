@@ -1,13 +1,16 @@
 name: Deploy to Production Server
 
 on:
-  push:
+  pull_request:
     branches: [ production ]
+    types: [ closed ]
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Only run if it's a merged PR to production
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     
     steps:
     - name: Checkout code
@@ -16,26 +19,30 @@ jobs:
     - name: Setup SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-        chmod 600 ~/.ssh/id_ed25519
         chmod 700 ~/.ssh
-        ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || echo "Warning: ssh-keyscan failed, using StrictHostKeyChecking=no"
-        # Test SSH key format
-        ssh-keygen -l -f ~/.ssh/id_ed25519 || echo "SSH key format issue detected"
+        # Write SSH private key - decode from base64
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+        # Add host to known_hosts
+        ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
         
-    - name: Deploy to server
+    - name: Deploy wp-content changes to server
       run: |
-        rsync -avz --delete \
-          -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
-          --exclude='.git' \
-          --exclude='.github' \
-          --exclude='README.md' \
-          --exclude='.gitignore' \
-          ./ \
-          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
+        echo "🚀 Deploying only wp-content changes to server..."
+        # Use rsync with --delete flag to sync and remove deleted files
+        rsync -avz --delete --progress \
+          -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
+          --exclude='.git*' \
+          --exclude='*.log' \
+          --exclude='cache/' \
+          --exclude='backup*' \
+          --timeout=300 \
+          ./wp-content/ \
+          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/wp-content/
           
     - name: Deployment Success
       run: |
-        echo "🚀 Deployment to swrice.com completed successfully!"
-        echo "📁 Files synced to: ${{ secrets.DEPLOY_PATH }}/"
-        echo "🌐 Your WordPress site should now be updated at swrice.com"
+        echo "🎉 Deployment to swrice.com completed successfully!"
+        echo "📁 wp-content synced with deleted files removed from server"
+        echo "🌐 Your WordPress site is now updated at swrice.com"
+        echo "✅ WordPress core files on server remain untouched"
