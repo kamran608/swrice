@@ -75,7 +75,7 @@ add_shortcode('learndash_course_progress_buy_button', function() {
 		'product_id' => '16283',
 		'plan_id'    => '31422',
 		'public_key' => 'pk_f570659b025f9f10ec3bd7e1ffa1a',
-		'image'      => 'https://your-plugin-site.com/logo-100x100.png',
+		'image'      => 'http://swrice.com/wp-content/uploads/2026/02/ChatGPT-Image-Feb-21-2026-11_35_35-PM.png',
 		'prices'     => [
 			'1'               => 'Single Site — $30 / Year',
 			'5'               => '5 Sites — $60 / Year',
@@ -92,7 +92,7 @@ add_shortcode('collapsible_section_for_learndash_buy_button', function() {
 		'product_id' => '21131',
 		'plan_id'    => '35260',
 		'public_key' => 'pk_5deac6b2dbfc3abf9a4a69353a522',
-		'image'      => 'https://your-plugin-site.com/logo-100x100.png',
+		'image'      => 'http://swrice.com/wp-content/uploads/2026/02/csfl-icon.png',
 		'prices'     => [
 			'1'               => 'Single Site — $39 / Year',
 			'5'               => '5 Sites — $99 / Year',
@@ -109,7 +109,7 @@ add_shortcode('gamipress_ld_trigger_inte', function() {
 		'product_id' => '14127',
 		'plan_id'    => '31433',
 		'public_key' => 'pk_8bd928ba5bd6a4cc61f733a4f75ee',
-		'image'      => 'https://your-plugin-site.com/logo-100x100.png',
+		'image'      => 'http://swrice.com/wp-content/uploads/2026/02/glti.png',
 		'prices'     => [
 			'1'               => 'Single Site — $30 / Year',
 			'5'               => '5 Sites — $60 / Year',
@@ -126,7 +126,7 @@ add_shortcode('reaction_count_for_buddyboss_buy_button', function() {
 		'product_id' => '14176',
 		'plan_id'    => '23737',
 		'public_key' => 'pk_ee417a1e27199462f36c5ec408a3d',
-		'image'      => 'https://your-plugin-site.com/logo-100x100.png',
+		'image'      => '',
 		'prices'     => [
 			'1'               => 'Single Site — $30 / Year',
 			'unlimited'       => 'Unlimited Sites — $60 / Year',
