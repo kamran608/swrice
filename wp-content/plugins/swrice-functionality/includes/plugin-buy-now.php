@@ -75,7 +75,7 @@ add_shortcode('learndash_course_progress_buy_button', function() {
 		'product_id' => '16283',
 		'plan_id'    => '31422',
 		'public_key' => 'pk_f570659b025f9f10ec3bd7e1ffa1a',
-		'image'      => 'https://s3-us-west-2.amazonaws.com/freemius/plugins/16283/icons/334c1BVTrB47erypG3tevi1U9Fv6BbNUBEiuiX.png',
+		'image'      => '',
 		'prices'     => [
 			'1'               => 'Single Site — $30 / Year',
 			'5'               => '5 Sites — $60 / Year',
