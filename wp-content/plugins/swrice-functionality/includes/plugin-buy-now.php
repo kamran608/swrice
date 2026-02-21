@@ -109,7 +109,7 @@ add_shortcode('gamipress_ld_trigger_inte', function() {
 		'product_id' => '14127',
 		'plan_id'    => '31433',
 		'public_key' => 'pk_8bd928ba5bd6a4cc61f733a4f75ee',
-		'image'      => 'https://swrice.com/wp-content/uploads/2026/02/glti.png',
+		'image'      => 'https://s3-us-west-2.amazonaws.com/freemius/plugins/14127/icons/1ffb8d47cdcd26d824e2e8c4299980dd.png',
 		'prices'     => [
 			'1'               => 'Single Site — $30 / Year',
 			'5'               => '5 Sites — $60 / Year',
