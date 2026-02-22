@@ -138,6 +138,7 @@ class Swrice_Gutenberg_Page_Builder {
                 'heroSubtitle' => array('type' => 'string', 'default' => 'Transform your WordPress experience'),
                 'pluginPrice' => array('type' => 'string', 'default' => '49'),
                 'pluginOriginalPrice' => array('type' => 'string', 'default' => '99'),
+                'totalValue' => array('type' => 'string', 'default' => '199'),
                 'buyNowShortcode' => array('type' => 'string', 'default' => ''),
                 'demoLink' => array('type' => 'string', 'default' => ''),
                 'heroImageId' => array('type' => 'number', 'default' => 0),

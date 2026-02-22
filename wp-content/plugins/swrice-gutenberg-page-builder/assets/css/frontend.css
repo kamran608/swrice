@@ -159,6 +159,77 @@
     margin-top: 6px;
 }
 
+/* Hero Pricing Section */
+.sppm-hero-pricing {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(30,40,50,0.08);
+}
+
+.sppm-pricing-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sppm-pricing-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sppm-pricing-value {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sppm-current-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.sppm-original-price {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: line-through;
+}
+
+.sppm-total-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* Responsive adjustments for pricing */
+@media (max-width: 768px) {
+    .sppm-hero-pricing {
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 20px;
+        padding: 16px 0;
+    }
+    
+    .sppm-pricing-item {
+        gap: 6px;
+    }
+    
+    .sppm-current-price,
+    .sppm-total-value {
+        font-size: 20px;
+    }
+    
+    .sppm-original-price {
+        font-size: 16px;
+    }
+}
+
 .sppm-btn {
     display: inline-flex;
     align-items: center;

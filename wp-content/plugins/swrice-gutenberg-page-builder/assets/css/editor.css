@@ -146,6 +146,54 @@
     flex-wrap: wrap;
 }
 
+/* Hero Pricing Section - Editor Styles */
+.sgpb-plugin-page-editor .sppm-hero-pricing {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(30,40,50,0.08);
+}
+
+.sgpb-plugin-page-editor .sppm-pricing-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sgpb-plugin-page-editor .sppm-pricing-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sgpb-plugin-page-editor .sppm-pricing-value {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sgpb-plugin-page-editor .sppm-current-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.sgpb-plugin-page-editor .sppm-original-price {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: line-through;
+}
+
+.sgpb-plugin-page-editor .sppm-total-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+}
+
 /* Button Styles - Exact Frontend Match */
 .sgpb-plugin-page-editor .sppm-btn {
     display: inline-flex;

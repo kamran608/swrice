@@ -9,6 +9,7 @@ $plugin_name = isset($attributes['pluginName']) ? $attributes['pluginName'] : 'P
 $hero_subtitle = isset($attributes['heroSubtitle']) ? $attributes['heroSubtitle'] : 'Plugin subtitle';
 $plugin_price = isset($attributes['pluginPrice']) ? $attributes['pluginPrice'] : '29';
 $plugin_original_price = isset($attributes['pluginOriginalPrice']) ? $attributes['pluginOriginalPrice'] : '49';
+$total_value = isset($attributes['totalValue']) ? $attributes['totalValue'] : '199';
 $buy_now_shortcode = isset($attributes['buyNowShortcode']) ? $attributes['buyNowShortcode'] : '';
 $demo_link = isset($attributes['demoLink']) ? $attributes['demoLink'] : '';
 $hero_image = isset($attributes['heroImageUrl']) ? $attributes['heroImageUrl'] : '';
@@ -49,6 +50,25 @@ $hero_image = isset($attributes['heroImageUrl']) ? $attributes['heroImageUrl'] :
             <?php if (!empty($demo_link) && $demo_link !== '#'): ?>
                 <a href="<?php echo esc_url($demo_link); ?>" class="sppm-btn sppm-btn-ghost" target="_blank">Live Demo</a>
             <?php endif; ?>
+        </div>
+
+        <!-- Price and Total Value Section -->
+        <div class="sppm-hero-pricing">
+            <div class="sppm-pricing-item">
+                <div class="sppm-pricing-label">Price</div>
+                <div class="sppm-pricing-value">
+                    <span class="sppm-current-price">$<?php echo esc_html($plugin_price); ?></span>
+                    <?php if ($plugin_original_price && $plugin_original_price !== $plugin_price): ?>
+                        <span class="sppm-original-price">$<?php echo esc_html($plugin_original_price); ?></span>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="sppm-pricing-item">
+                <div class="sppm-pricing-label">Total Value</div>
+                <div class="sppm-pricing-value">
+                    <span class="sppm-total-value">$<?php echo esc_html($total_value); ?></span>
+                </div>
+            </div>
         </div>
     </div>
 
