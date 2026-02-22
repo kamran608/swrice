@@ -53,23 +53,26 @@ $hero_image = isset($attributes['heroImageUrl']) ? $attributes['heroImageUrl'] :
         </div>
 
         <!-- Price and Total Value Section -->
-        <div class="sppm-hero-pricing">
-            <div class="sppm-pricing-item">
-                <div class="sppm-pricing-label">Price</div>
-                <div class="sppm-pricing-value">
-                    <span class="sppm-current-price">$<?php echo esc_html($plugin_price); ?></span>
-                    <?php if ($plugin_original_price && $plugin_original_price !== $plugin_price): ?>
-                        <span class="sppm-original-price">$<?php echo esc_html($plugin_original_price); ?></span>
-                    <?php endif; ?>
+        <?php if (!empty($plugin_price) || !empty($plugin_original_price) || !empty($total_value)): ?>
+        <div class="sppm-price-wrapper">
+            <div class="sppm-price-box">
+                <div class="sppm-column">
+                    <div class="sppm-label">PRICE</div>
+                    <div class="sppm-price">
+                        <span class="sppm-new-price">$<?php echo esc_html($plugin_price); ?></span>
+                        <?php if ($plugin_original_price && $plugin_original_price !== $plugin_price): ?>
+                            <span class="sppm-old-price">$<?php echo esc_html($plugin_original_price); ?></span>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
-            <div class="sppm-pricing-item">
-                <div class="sppm-pricing-label">Total Value</div>
-                <div class="sppm-pricing-value">
-                    <span class="sppm-total-value">$<?php echo esc_html($total_value); ?></span>
+                <div class="sppm-divider"></div>
+                <div class="sppm-column">
+                    <div class="sppm-label">TOTAL VALUE</div>
+                    <div class="sppm-value">$<?php echo esc_html($total_value); ?></div>
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 
     <div class="sppm-hero-right">

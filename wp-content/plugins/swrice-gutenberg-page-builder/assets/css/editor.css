@@ -147,81 +147,65 @@
 }
 
 /* Hero Pricing Section - Editor Styles */
-.sgpb-plugin-page-editor .sppm-hero-pricing {
-    display: flex;
-    gap: 24px;
-    margin-top: 32px;
-    padding: 24px;
-    background: var(--card-bg);
-    border-radius: 16px;
-    border: 1px solid rgba(30,40,50,0.06);
-    box-shadow: 0 4px 20px rgba(29,42,63,0.08);
-}
-
-.sgpb-plugin-page-editor .sppm-pricing-item {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex: 1;
-}
-
-.sgpb-plugin-page-editor .sppm-pricing-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 4px;
-}
-
-.sgpb-plugin-page-editor .sppm-pricing-value {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.sgpb-plugin-page-editor .sppm-current-price {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--accent);
-    line-height: 1;
-}
-
-.sgpb-plugin-page-editor .sppm-original-price {
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: line-through;
-    opacity: 0.7;
-}
-
-.sgpb-plugin-page-editor .sppm-total-value {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--text);
-    line-height: 1;
-}
-
-/* Add separator between pricing items in editor */
-.sgpb-plugin-page-editor .sppm-pricing-item:first-child::after {
-    content: '';
-    position: absolute;
-    right: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 60%;
-    background: rgba(30,40,50,0.08);
-}
-
-.sgpb-plugin-page-editor .sppm-pricing-item:first-child {
+.sgpb-plugin-page-editor .sppm-price-wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin: 32px auto 0;
     position: relative;
-    padding-right: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.sgpb-plugin-page-editor .sppm-pricing-item:last-child {
-    padding-left: 12px;
+.sgpb-plugin-page-editor .sppm-price-box {
+    display: flex;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px 26px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    align-items: center;
+}
+
+.sgpb-plugin-page-editor .sppm-column {
+    flex: 1;
+    text-align: center;
+}
+
+.sgpb-plugin-page-editor .sppm-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 8px;
+}
+
+.sgpb-plugin-page-editor .sppm-price {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.sgpb-plugin-page-editor .sppm-old-price {
+    font-size: 22px;
+    color: #9ca3af;
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
+.sgpb-plugin-page-editor .sppm-new-price {
+    font-size: 42px;
+    font-weight: 800;
+    color: #0f3d44;
+}
+
+.sgpb-plugin-page-editor .sppm-value {
+    font-size: 40px;
+    font-weight: 800;
+    color: #1f7a3f;
+}
+
+.sgpb-plugin-page-editor .sppm-divider {
+    width: 1px;
+    height: 65px;
+    background: #e5e7eb;
 }
 
 /* Button Styles - Exact Frontend Match */
