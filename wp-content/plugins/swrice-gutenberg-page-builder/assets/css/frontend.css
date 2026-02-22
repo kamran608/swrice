@@ -162,71 +162,113 @@
 /* Hero Pricing Section */
 .sppm-hero-pricing {
     display: flex;
-    gap: 32px;
-    margin-top: 24px;
-    padding: 20px 0;
-    border-top: 1px solid rgba(30,40,50,0.08);
+    gap: 24px;
+    margin-top: 32px;
+    padding: 24px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid rgba(30,40,50,0.06);
+    box-shadow: 0 4px 20px rgba(29,42,63,0.08);
 }
 
 .sppm-pricing-item {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    flex: 1;
 }
 
 .sppm-pricing-label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
 }
 
 .sppm-pricing-value {
     display: flex;
-    align-items: center;
-    gap: 12px;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .sppm-current-price {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
     color: var(--accent);
+    line-height: 1;
 }
 
 .sppm-original-price {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     color: var(--muted);
     text-decoration: line-through;
+    opacity: 0.7;
 }
 
 .sppm-total-value {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
     color: var(--text);
+    line-height: 1;
+}
+
+/* Add separator between pricing items */
+.sppm-pricing-item:first-child::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60%;
+    background: rgba(30,40,50,0.08);
+}
+
+.sppm-pricing-item:first-child {
+    position: relative;
+    padding-right: 12px;
+}
+
+.sppm-pricing-item:last-child {
+    padding-left: 12px;
 }
 
 /* Responsive adjustments for pricing */
 @media (max-width: 768px) {
     .sppm-hero-pricing {
         flex-direction: column;
-        gap: 16px;
-        margin-top: 20px;
-        padding: 16px 0;
+        gap: 20px;
+        margin-top: 24px;
+        padding: 20px;
     }
     
     .sppm-pricing-item {
-        gap: 6px;
+        gap: 8px;
+        padding: 0 !important;
+    }
+    
+    .sppm-pricing-item:first-child::after {
+        display: none;
     }
     
     .sppm-current-price,
     .sppm-total-value {
-        font-size: 20px;
+        font-size: 24px;
     }
     
     .sppm-original-price {
-        font-size: 16px;
+        font-size: 18px;
+    }
+    
+    /* Add horizontal separator for mobile */
+    .sppm-pricing-item:first-child {
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(30,40,50,0.08);
+        margin-bottom: 4px;
     }
 }
 
