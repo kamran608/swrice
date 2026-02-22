@@ -150,17 +150,18 @@
 .sgpb-plugin-page-editor .sppm-price-wrapper {
     width: 100%;
     max-width: 700px;
-    margin: 32px auto 0;
+    margin: auto;
     position: relative;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin-top: 32px;
 }
 
 .sgpb-plugin-page-editor .sppm-price-box {
     display: flex;
     background: #ffffff;
     border-radius: 16px;
-    padding: 22px 26px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 22px 26px; /* reduced height */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* normal, soft shadow */
     align-items: center;
 }
 
@@ -170,7 +171,7 @@
 }
 
 .sgpb-plugin-page-editor .sppm-label {
-    font-size: 18px;
+    font-size: 18px; /* bigger heading */
     font-weight: 600;
     color: #4b5563;
     margin-bottom: 8px;
@@ -204,8 +205,15 @@
 
 .sgpb-plugin-page-editor .sppm-divider {
     width: 1px;
-    height: 65px;
+    height: 65px; /* slightly shorter */
     background: #e5e7eb;
+}
+
+.sgpb-plugin-page-editor .sppm-offer-badge {
+    position: absolute;
+    bottom: -26px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Button Styles - Exact Frontend Match */

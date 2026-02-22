@@ -57,20 +57,24 @@ $hero_image = isset($attributes['heroImageUrl']) ? $attributes['heroImageUrl'] :
         <div class="sppm-price-wrapper">
             <div class="sppm-price-box">
                 <div class="sppm-column">
-                    <div class="sppm-label">PRICE</div>
+                    <div class="sppm-label">Price</div>
                     <div class="sppm-price">
-                        <span class="sppm-new-price">$<?php echo esc_html($plugin_price); ?></span>
                         <?php if ($plugin_original_price && $plugin_original_price !== $plugin_price): ?>
                             <span class="sppm-old-price">$<?php echo esc_html($plugin_original_price); ?></span>
                         <?php endif; ?>
+                        <span class="sppm-new-price">$<?php echo esc_html($plugin_price); ?></span>
                     </div>
                 </div>
+
                 <div class="sppm-divider"></div>
+
                 <div class="sppm-column">
-                    <div class="sppm-label">TOTAL VALUE</div>
-                    <div class="sppm-value">$<?php echo esc_html($total_value); ?></div>
+                    <div class="sppm-label">Total Value</div>
+                    <div class="sppm-value">$<?php echo esc_html($total_value); ?>+</div>
                 </div>
             </div>
+
+            <div class="sppm-offer-badge">✨ Limited Time Offer!</div>
         </div>
         <?php endif; ?>
     </div>
