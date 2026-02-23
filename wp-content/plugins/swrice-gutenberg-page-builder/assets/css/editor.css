@@ -214,6 +214,35 @@
     bottom: -26px;
     left: 50%;
     transform: translateX(-50%);
+    background: linear-gradient(180deg, #fffaf0 0%, #fde8c8 100%);
+    color: #f97316;
+    font-weight: 700;
+    padding: 12px 40px;
+    border-radius: 999px;
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border: 1px solid rgba(249,115,22,0.25);
+}
+
+.sgpb-plugin-page-editor .sppm-offer-badge::before,
+.sgpb-plugin-page-editor .sppm-offer-badge::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    width: 18px;
+    height: 18px;
+    background: #fdeccd;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.sgpb-plugin-page-editor .sppm-offer-badge::before {
+    left: 18px;
+}
+
+.sgpb-plugin-page-editor .sppm-offer-badge::after {
+    right: 18px;
 }
 
 /* Button Styles - Exact Frontend Match */
