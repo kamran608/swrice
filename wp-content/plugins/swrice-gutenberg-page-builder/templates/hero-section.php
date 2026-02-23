@@ -55,7 +55,7 @@ $hero_image = isset($attributes['heroImageUrl']) ? $attributes['heroImageUrl'] :
         <!-- Price and Total Value Section -->
         <?php if (!empty($plugin_price) || !empty($plugin_original_price) || !empty($total_value)): ?>
         <div class="sppm-price-wrapper">
-            <div class="sppm-price-box">
+            <div class="sppm-price-box <?php echo empty($total_value) ? 'sppm-price-only' : ''; ?>">
                 <div class="sppm-column">
                     <div class="sppm-label">Price</div>
                     <div class="sppm-price">
@@ -66,12 +66,14 @@ $hero_image = isset($attributes['heroImageUrl']) ? $attributes['heroImageUrl'] :
                     </div>
                 </div>
 
+                <?php if (!empty($total_value)): ?>
                 <div class="sppm-divider"></div>
 
                 <div class="sppm-column">
                     <div class="sppm-label">Total Value</div>
                     <div class="sppm-value">$<?php echo esc_html($total_value); ?>+</div>
                 </div>
+                <?php endif; ?>
             </div>
 
             <div class="sppm-offer-badge">✨ Limited Time Offer!</div>

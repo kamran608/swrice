@@ -183,6 +183,16 @@
     text-align: center;
 }
 
+/* When only price is shown (no total value) */
+.sppm-price-box.sppm-price-only {
+    justify-content: center;
+}
+
+.sppm-price-box.sppm-price-only .sppm-column {
+    flex: none;
+    max-width: 300px;
+}
+
 .sppm-label {
     font-size: 18px; /* bigger heading */
     font-weight: 600;

@@ -170,6 +170,16 @@
     text-align: center;
 }
 
+/* When only price is shown (no total value) - Editor */
+.sgpb-plugin-page-editor .sppm-price-box.sppm-price-only {
+    justify-content: center;
+}
+
+.sgpb-plugin-page-editor .sppm-price-box.sppm-price-only .sppm-column {
+    flex: none;
+    max-width: 300px;
+}
+
 .sgpb-plugin-page-editor .sppm-label {
     font-size: 18px; /* bigger heading */
     font-weight: 600;
