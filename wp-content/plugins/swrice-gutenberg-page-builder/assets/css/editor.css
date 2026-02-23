@@ -172,12 +172,14 @@
 
 /* When only price is shown (no total value) - Editor */
 .sgpb-plugin-page-editor .sppm-price-box.sppm-price-only {
+    max-width: 400px;
+    margin: 0 auto;
     justify-content: center;
 }
 
 .sgpb-plugin-page-editor .sppm-price-box.sppm-price-only .sppm-column {
     flex: none;
-    max-width: 300px;
+    width: 100%;
 }
 
 .sgpb-plugin-page-editor .sppm-label {
