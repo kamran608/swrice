@@ -77,10 +77,10 @@ add_shortcode('learndash_course_progress_buy_button', function() {
 		'public_key' => 'pk_f570659b025f9f10ec3bd7e1ffa1a',
 		'image'      => '',
 		'prices'     => [
-			'1'               => 'Single Site — $30 / Year',
-			'5'               => '5 Sites — $60 / Year',
-			'single_lifetime' => 'Single Site — $50 (Lifetime)',
-			'five_lifetime'   => '5 Sites — $80 (Lifetime)',
+			'1'               => 'Single Site — $29 / Year',
+			'5'               => '5 Sites — $59 / Year',
+			'single_lifetime' => 'Single Site — $49 (Lifetime)',
+			'five_lifetime'   => '5 Sites — $79 (Lifetime)',
 		],
 	]);
 });
