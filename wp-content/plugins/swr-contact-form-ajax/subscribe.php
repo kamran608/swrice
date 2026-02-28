@@ -5,9 +5,10 @@
  */
 function swr_subscribe_form_shortcode() {
 	ob_start();
+	$user_email = isset( $_GET['email'] ) ? $_GET['email'] : '';
 	?>
 	<form id="swr-subscribe-form">
-		<input type="email" name="user_email" required placeholder="Enter your email" />
+		<input type="email" name="user_email" required value="<?php echo $user_email; ?>" placeholder="Enter your email" />
 		<select name="status">
 			<option value="subscribed">Subscribe</option>
 			<option value="unsubscribed">Unsubscribe</option>

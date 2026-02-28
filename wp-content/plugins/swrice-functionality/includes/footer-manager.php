@@ -878,8 +878,10 @@ class Swrice_Footer_Manager {
                             <?php echo esc_html($settings['newsletter_text']); ?>
                         </p>
                         <?php endif; ?>
-                        <form class="swrice-newsletter-form" onsubmit="return false;">
-                            <input type="email" class="swrice-newsletter-input" placeholder="<?php echo esc_attr($settings['newsletter_placeholder']); ?>" required>
+                        <form class="swrice-newsletter-form" method="get" action="<?php echo site_url().'/subscribe'; ?>">
+                            <input type="email" name="email" class="swrice-newsletter-input"
+                                placeholder="<?php echo esc_attr($settings['newsletter_placeholder']); ?>"
+                                required>
                             <button type="submit" class="swrice-newsletter-btn">Subscribe</button>
                         </form>
                     </div>
