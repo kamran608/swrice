@@ -9,6 +9,7 @@ $plugin_name = isset($attributes['pluginName']) ? $attributes['pluginName'] : 'P
 $hero_subtitle = isset($attributes['heroSubtitle']) ? $attributes['heroSubtitle'] : 'Plugin subtitle';
 $plugin_price = isset($attributes['pluginPrice']) ? $attributes['pluginPrice'] : '29';
 $plugin_original_price = isset($attributes['pluginOriginalPrice']) ? $attributes['pluginOriginalPrice'] : '49';
+$total_value = isset($attributes['totalValue']) ? $attributes['totalValue'] : '199';
 $buy_now_shortcode = isset($attributes['buyNowShortcode']) ? $attributes['buyNowShortcode'] : '';
 $demo_link = isset($attributes['demoLink']) ? $attributes['demoLink'] : '';
 $hero_image = isset($attributes['heroImageUrl']) ? $attributes['heroImageUrl'] : '';
@@ -50,6 +51,34 @@ $hero_image = isset($attributes['heroImageUrl']) ? $attributes['heroImageUrl'] :
                 <a href="<?php echo esc_url($demo_link); ?>" class="sppm-btn sppm-btn-ghost" target="_blank">Live Demo</a>
             <?php endif; ?>
         </div>
+
+        <!-- Price and Total Value Section -->
+        <?php if (!empty($plugin_price) || !empty($plugin_original_price) || !empty($total_value)): ?>
+        <div class="sppm-price-wrapper">
+            <div class="sppm-price-box <?php echo empty($total_value) ? 'sppm-price-only' : ''; ?>">
+                <div class="sppm-column">
+                    <div class="sppm-label">Price</div>
+                    <div class="sppm-price">
+                        <?php if ($plugin_original_price && $plugin_original_price !== $plugin_price): ?>
+                            <span class="sppm-old-price">$<?php echo esc_html($plugin_original_price); ?></span>
+                        <?php endif; ?>
+                        <span class="sppm-new-price">$<?php echo esc_html($plugin_price); ?></span>
+                    </div>
+                </div>
+
+                <?php if (!empty($total_value)): ?>
+                <div class="sppm-divider"></div>
+
+                <div class="sppm-column">
+                    <div class="sppm-label">Total Value</div>
+                    <div class="sppm-value">$<?php echo esc_html($total_value); ?>+</div>
+                </div>
+                <?php endif; ?>
+            </div>
+
+            <div class="sppm-offer-badge">✨ Limited Time Offer!</div>
+        </div>
+        <?php endif; ?>
     </div>
 
     <div class="sppm-hero-right">

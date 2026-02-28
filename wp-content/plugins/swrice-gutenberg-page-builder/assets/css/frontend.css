@@ -159,6 +159,164 @@
     margin-top: 6px;
 }
 
+/* Hero Pricing Section - Complete Design */
+.sppm-price-wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin-top: 32px;
+}
+
+.sppm-price-box {
+    display: flex;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px 26px; /* reduced height */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* normal, soft shadow */
+    align-items: center;
+}
+
+.sppm-column {
+    flex: 1;
+    text-align: center;
+}
+
+/* When only price is shown (no total value) */
+.sppm-price-box.sppm-price-only {
+    max-width: 400px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.sppm-price-box.sppm-price-only .sppm-column {
+    flex: none;
+    width: 100%;
+}
+
+.sppm-label {
+    font-size: 18px; /* bigger heading */
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 8px;
+}
+
+.sppm-price {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.sppm-old-price {
+    font-size: 22px;
+    color: #9ca3af;
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
+.sppm-new-price {
+    font-size: 42px;
+    font-weight: 800;
+    color: #0f3d44;
+}
+
+.sppm-value {
+    font-size: 40px;
+    font-weight: 800;
+    color: #1f7a3f;
+}
+
+.sppm-divider {
+    width: 1px;
+    height: 65px; /* slightly shorter */
+    background: #e5e7eb;
+}
+
+.sppm-offer-badge {
+    position: absolute;
+    bottom: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #fffaf0 0%, #fde8c8 100%);
+    color: #f97316;
+    font-weight: 700;
+    padding: 12px 40px;
+    border-radius: 999px;
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border: 1px solid rgba(249,115,22,0.25);
+}
+
+.sppm-offer-badge::before,
+.sppm-offer-badge::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    width: 18px;
+    height: 18px;
+    background: #fdeccd;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.sppm-offer-badge::before {
+    left: 18px;
+}
+
+.sppm-offer-badge::after {
+    right: 18px;
+}
+
+/* Responsive adjustments for pricing */
+@media (max-width: 640px) {
+    .sppm-price-wrapper {
+        margin-top: 24px;
+        max-width: 100%;
+        padding: 20px;
+    }
+    
+    .sppm-price-box {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+    }
+    
+    .sppm-divider {
+        width: 60%;
+        height: 1px;
+    }
+    
+    .sppm-new-price {
+        font-size: 36px;
+    }
+    
+    .sppm-value {
+        font-size: 34px;
+    }
+    
+    .sppm-old-price {
+        font-size: 20px;
+    }
+    
+    .sppm-label {
+        font-size: 16px;
+    }
+    
+    .sppm-offer-badge {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 14px;
+        text-align: center;
+        font-size: 16px;
+        padding: 10px 26px;
+    }
+}
+
 .sppm-btn {
     display: inline-flex;
     align-items: center;
