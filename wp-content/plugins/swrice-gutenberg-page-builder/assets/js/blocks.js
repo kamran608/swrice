@@ -254,6 +254,7 @@ registerBlockType('swrice/hero-section', {
         heroSubtitle: { type: 'string', default: 'Transform your WordPress experience with our powerful plugin solution' },
         pluginPrice: { type: 'string', default: '49' },
         pluginOriginalPrice: { type: 'string', default: '99' },
+        totalValue: { type: 'string', default: '199' },
         buyNowShortcode: { type: 'string', default: '' },
         demoLink: { type: 'string', default: '' },
         heroImageId: { type: 'number', default: 0 },
@@ -287,6 +288,12 @@ registerBlockType('swrice/hero-section', {
                         label: 'Original Price ($)',
                         value: getAttr('pluginOriginalPrice'),
                         onChange: (val) => setAttributes({ pluginOriginalPrice: val }),
+                        type: 'number'
+                    }),
+                    createElement(TextControl, {
+                        label: 'Total Value ($)',
+                        value: getAttr('totalValue'),
+                        onChange: (val) => setAttributes({ totalValue: val }),
                         type: 'number'
                     }),
                     createElement(TextareaControl, {
