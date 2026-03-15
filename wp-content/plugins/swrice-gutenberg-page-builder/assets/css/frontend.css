@@ -1617,7 +1617,7 @@
 
 /* Premium Video Tutorial */
 .sppm-video-tutorial-section {
-    background: linear-gradient(135deg, #f8fbff 0%, var(--page-bg) 100%);
+    background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
     position: relative;
 }
 
@@ -1926,7 +1926,7 @@
 
 /* Video Tutorial Section */
 .sppm-video-tutorial-section {
-    background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+    background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
     border-radius: 20px;
     padding: 40px;
     text-align: center;
