@@ -28,61 +28,25 @@ jobs:
         
     - name: Deploy wp-content changes to server
       run: |
-        echo "🚀 Deploying only changed files to server..."
+        echo "🚀 Deploying wp-content changes to server..."
         
-        # Get list of changed files in wp-content from the last commit
-        CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep "^wp-content/" || true)
-        
-        if [ -z "$CHANGED_FILES" ]; then
-          echo "ℹ️ No wp-content files changed in this commit"
-          exit 0
-        fi
-        
-        echo "📁 Files to deploy:"
-        echo "$CHANGED_FILES"
-        
-        # Debug: Show current working directory and verify files exist
-        echo "🔍 Current directory: $(pwd)"
-        echo "🔍 Verifying files exist locally:"
-        for file in $CHANGED_FILES; do
-          if [ -f "$file" ]; then
-            echo "✅ $file exists ($(stat -c%s "$file") bytes)"
-          else
-            echo "❌ $file NOT FOUND"
-          fi
-        done
-        
-        # Create a temporary file list for rsync
-        echo "$CHANGED_FILES" > /tmp/files_to_deploy.txt
-        echo "🔍 File list contents:"
-        cat /tmp/files_to_deploy.txt
-        
-        # Test SSH connection first
-        echo "🔍 Testing SSH connection..."
-        ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
-          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'SSH connection successful'; ls -la ${{ secrets.DEPLOY_PATH }}/"
-        
-        # Use rsync with --files-from to deploy only changed files (with verbose output)
-        echo "🚀 Starting rsync deployment..."
-        rsync -avz --progress --verbose \
+        # Use rsync to sync wp-content with --update flag (no --delete to preserve server files)
+        # This will only transfer files that are newer locally than on the server
+        rsync -avz --update --progress \
           -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-          --files-from=/tmp/files_to_deploy.txt \
+          --exclude='.git*' \
+          --exclude='*.log' \
+          --exclude='cache/' \
+          --exclude='backup*' \
+          --exclude='uploads/' \
           --timeout=300 \
-          ./ \
-          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
-        
-        # Verify deployment by checking if files exist on server
-        echo "🔍 Verifying deployment on server..."
-        for file in $CHANGED_FILES; do
-          ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "if [ -f '${{ secrets.DEPLOY_PATH }}/$file' ]; then echo '✅ $file deployed successfully'; else echo '❌ $file NOT FOUND on server'; fi"
-        done
+          ./wp-content/ \
+          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/wp-content/
           
     - name: Deployment Success
       run: |
         echo "🎉 Deployment to swrice.com completed successfully!"
-        echo "📁 Only Git-changed files deployed to server"
-        echo "🛡️ All other server files preserved and untouched"
+        echo "📁 wp-content synced with --update flag (only newer files transferred)"
+        echo "🛡️ Server files preserved (no --delete flag, uploads excluded)"
         echo "🌐 Your WordPress site is now updated at swrice.com"
         echo "✅ WordPress core files on server remain untouched"
