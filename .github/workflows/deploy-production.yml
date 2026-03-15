@@ -29,22 +29,33 @@ jobs:
     - name: Deploy wp-content changes to server
       run: |
         echo "🚀 Deploying only changed files to server..."
-        # Use rsync to sync only changed files (no --delete flag to preserve server files)
-        rsync -avz --update --progress \
+        
+        # Get list of changed files in wp-content from the last commit
+        CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep "^wp-content/" || true)
+        
+        if [ -z "$CHANGED_FILES" ]; then
+          echo "ℹ️ No wp-content files changed in this commit"
+          exit 0
+        fi
+        
+        echo "📁 Files to deploy:"
+        echo "$CHANGED_FILES"
+        
+        # Create a temporary file list for rsync
+        echo "$CHANGED_FILES" > /tmp/files_to_deploy.txt
+        
+        # Use rsync with --files-from to deploy only changed files
+        rsync -avz --progress \
           -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-          --exclude='.git*' \
-          --exclude='*.log' \
-          --exclude='cache/' \
-          --exclude='backup*' \
-          --exclude='uploads/' \
+          --files-from=/tmp/files_to_deploy.txt \
           --timeout=300 \
-          ./wp-content/ \
-          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/wp-content/
+          ./ \
+          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
           
     - name: Deployment Success
       run: |
         echo "🎉 Deployment to swrice.com completed successfully!"
-        echo "📁 Only changed files in wp-content synced to server"
-        echo "🛡️ Server files preserved (uploads, server-only changes kept)"
+        echo "📁 Only Git-changed files deployed to server"
+        echo "🛡️ All other server files preserved and untouched"
         echo "🌐 Your WordPress site is now updated at swrice.com"
         echo "✅ WordPress core files on server remain untouched"
