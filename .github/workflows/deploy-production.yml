@@ -30,7 +30,7 @@ jobs:
         
     - name: Deploy wp-content changes to server
       run: |
-        echo "🚀 Deploying only changed files to server..."
+        echo "🚀 Deploying wp-content changes to server..."
         
         # Determine the correct base and head SHA for comparison
         if [ "${{ github.event_name }}" = "pull_request" ]; then
