@@ -41,16 +41,43 @@ jobs:
         echo "📁 Files to deploy:"
         echo "$CHANGED_FILES"
         
+        # Debug: Show current working directory and verify files exist
+        echo "🔍 Current directory: $(pwd)"
+        echo "🔍 Verifying files exist locally:"
+        for file in $CHANGED_FILES; do
+          if [ -f "$file" ]; then
+            echo "✅ $file exists ($(stat -c%s "$file") bytes)"
+          else
+            echo "❌ $file NOT FOUND"
+          fi
+        done
+        
         # Create a temporary file list for rsync
         echo "$CHANGED_FILES" > /tmp/files_to_deploy.txt
+        echo "🔍 File list contents:"
+        cat /tmp/files_to_deploy.txt
         
-        # Use rsync with --files-from to deploy only changed files
-        rsync -avz --progress \
+        # Test SSH connection first
+        echo "🔍 Testing SSH connection..."
+        ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
+          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'SSH connection successful'; ls -la ${{ secrets.DEPLOY_PATH }}/"
+        
+        # Use rsync with --files-from to deploy only changed files (with verbose output)
+        echo "🚀 Starting rsync deployment..."
+        rsync -avz --progress --verbose \
           -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
           --files-from=/tmp/files_to_deploy.txt \
           --timeout=300 \
           ./ \
           ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
+        
+        # Verify deployment by checking if files exist on server
+        echo "🔍 Verifying deployment on server..."
+        for file in $CHANGED_FILES; do
+          ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "if [ -f '${{ secrets.DEPLOY_PATH }}/$file' ]; then echo '✅ $file deployed successfully'; else echo '❌ $file NOT FOUND on server'; fi"
+        done
           
     - name: Deployment Success
       run: |
