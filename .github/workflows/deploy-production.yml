@@ -28,7 +28,7 @@ jobs:
         
     - name: Deploy wp-content changes to server
       run: |
-        echo "🚀 Deploying only changed files to server..."
+        echo "🚀 Deploying wp-content changes to server..."
         
         # Determine the correct base and head SHA for comparison
         if [ "${{ github.event_name }}" = "pull_request" ]; then
@@ -84,7 +84,11 @@ jobs:
         echo "🚀 Deploying $(cat /tmp/files_to_deploy.txt | wc -l) changed files..."
         rsync -avz --progress \
           -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-          --files-from=/tmp/files_to_deploy.txt \
+          --exclude='.git*' \
+          --exclude='*.log' \
+          --exclude='cache/' \
+          --exclude='backup*' \
+          --exclude='uploads/' \
           --timeout=300 \
           ./ \
           ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
