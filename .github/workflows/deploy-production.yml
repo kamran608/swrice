@@ -82,15 +82,13 @@ jobs:
         echo "🔍 Final deployment list:"
         cat /tmp/files_to_deploy.txt
         
-        # Deploy only the changed files using rsync --files-from
+        # Deploy only the changed files using rsync --files-from with proper flags
         echo "🚀 Deploying $(cat /tmp/files_to_deploy.txt | wc -l) changed files..."
         rsync -avz --progress \
           -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-          --exclude='.git*' \
-          --exclude='*.log' \
-          --exclude='cache/' \
-          --exclude='backup*' \
-          --exclude='uploads/' \
+          --files-from=/tmp/files_to_deploy.txt \
+          --no-dirs \
+          --no-implied-dirs \
           --timeout=300 \
           ./ \
           ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
