@@ -127,7 +127,7 @@
     text-align: center;
     color: #F7B737;
     font-size: 32px;
-    font-family: cursive;
+    font-family: 'Inter';
     border: 10px solid #EBEBEB;
     font-weight: 600;
     cursor: pointer;
@@ -147,7 +147,7 @@
     color: #E26330;
     font-size: 24px;
     font-weight: 600;
-    font-family: sans-serif;
+    font-family: 'Inter';
     display: none;
 }
 .tab-heading span {
@@ -167,7 +167,7 @@
     border-color: var(--wp--preset--color--contrast);
     border-width: 0;
     color: var(--wp--preset--color--base-2);
-    font-family: inherit;
+    font-family: 'Inter';
     font-size: var(--wp--preset--font-size--small);
     line-height: inherit;
     padding-top: 0.6rem;
@@ -658,11 +658,11 @@
    Prefix: body.single-post
 ================================== */
 body.post-template .wp-block-post-title {
-    font-family: inherit;
+    font-family: 'Inter';
     color: #000;
 }
 .swr-single-post-content * {
-    font-family: inherit;
+    font-family: 'Inter';
 }
 .swr-single-post-content{
     margin:40px auto;
