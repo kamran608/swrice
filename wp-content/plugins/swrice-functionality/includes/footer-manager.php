@@ -556,10 +556,8 @@ class Swrice_Footer_Manager {
         .swrice-custom-footer {
             background: linear-gradient(135deg, {$settings['bg_color']} 0%, " . $this->adjust_brightness($settings['bg_color'], -20) . " 100%);
             color: {$settings['text_color']};
-            padding: 60px 20px 20px;
             margin-top: 80px;
-            padding-right: 50px;
-            padding-left: 50px;
+            padding: 60px 0;
         }
         .swrice-footer-container {
         

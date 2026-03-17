@@ -12,6 +12,13 @@
 }
 .swrice-header-wrapper .swrice-header-wrap {
 	display: flex;
+	max-width: 1440px;
+	margin: auto;
+}
+.swrice-footer-container {
+	max-width: 1440px;
+	margin: auto;
+	padding: 0 40px;
 }
 .swrice-header-wrapper i {
 	font-size: 16px;
@@ -27,7 +34,7 @@
 }
 .swrice-header-wrapper .swrice-logo-wrapper{
 	width: 20%;
-	padding: 20px 0px 20px 50px;
+	padding: 20px 0px 20px 40px;
 	z-index: 11;
 }
 .swrice-header-wrapper .swrice-logo-wrapper img{
@@ -313,7 +320,7 @@ body .swrice-header-wrapper .swrice-submenu-heading a:hover {
     gap: 20px;
     justify-content: right;
     width: 20%;
-    padding-right: 50px
+	padding-right: 40px;
 }
 .social-icons {
 	display: flex;
