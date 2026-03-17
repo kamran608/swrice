@@ -89,9 +89,10 @@
 	display: flex;
     width: 100%;
     justify-content: space-evenly;
-    padding-top: 0px;
     background: #fff;
     margin-top: 33px;
+	max-width: 1400px;
+	margin: 33px auto 0 auto;
 }
 .swrice-header-wrapper .swrice-header-grid {
 	border-right: 1px;
