@@ -1241,3 +1241,78 @@ body.post-template aside.wp-block-template-part .wp-block-search__button{
     0%,100% { opacity: 1 }
     50% { opacity: .4 }
 }
+
+
+/* Wrapper fix (WordPress default table block) */
+.wp-block-table {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Table styling */
+.wp-block-table table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px; /* important for scroll */
+}
+
+/* Cells */
+.wp-block-table th,
+.wp-block-table td {
+    padding: 12px 14px;
+    border: 1px solid #eee;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Header */
+.wp-block-table th {
+    background: #f8fafc;
+    font-weight: 600;
+}
+
+/* First column (Feature) sticky */
+.wp-block-table td:first-child,
+.wp-block-table th:first-child {
+    text-align: left;
+    font-weight: 600;
+    background: #fff;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+/* Zebra stripes (better than default) */
+.wp-block-table.is-style-stripes tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+/* Emoji size fix (stars, checkmarks) */
+.wp-block-table img.emoji {
+    width: 16px;
+    height: 16px;
+}
+
+.wp-block-table table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.wp-block-table th {
+    background: linear-gradient(135deg, #f1f5f9, #ffffff);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+
+    .wp-block-table table {
+        min-width: 800px;
+    }
+
+    .wp-block-table th,
+    .wp-block-table td {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
