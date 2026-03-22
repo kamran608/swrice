@@ -116,6 +116,34 @@ class Swrice_Functionality {
             <script>window.LogRocket && window.LogRocket.init('rmkh0u/swrice');</script>
             <?php
         } );
+
+        // Load Poppins font
+		function swrice_load_poppins_font() {
+			wp_enqueue_style(
+				'swrice-poppins-font',
+				'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
+				false
+			);
+		}
+		add_action('wp_enqueue_scripts', 'swrice_load_poppins_font');
+
+		// Force font globally
+		function swrice_force_poppins_font() {
+			echo "<style>
+				html, body {
+					font-family: 'Poppins', sans-serif;
+				}
+				body * {
+					font-family: 'Poppins', sans-serif;
+				}
+
+				/* Prevent icon break */
+				i, span[class*='icon'], .fa, .fas, .far, .fab {
+					// font-family: inherit !important;
+				}
+			</style>";
+		}
+		add_action('wp_head', 'swrice_force_poppins_font');
     }
 }
 
