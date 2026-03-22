@@ -127,7 +127,6 @@
     text-align: center;
     color: #F7B737;
     font-size: 32px;
-    font-family: cursive;
     border: 10px solid #EBEBEB;
     font-weight: 600;
     cursor: pointer;
@@ -147,7 +146,6 @@
     color: #E26330;
     font-size: 24px;
     font-weight: 600;
-    font-family: sans-serif;
     display: none;
 }
 .tab-heading span {
@@ -167,7 +165,6 @@
     border-color: var(--wp--preset--color--contrast);
     border-width: 0;
     color: var(--wp--preset--color--base-2);
-    font-family: inherit;
     font-size: var(--wp--preset--font-size--small);
     line-height: inherit;
     padding-top: 0.6rem;
@@ -283,10 +280,6 @@
 }
 
 /* Modern Collapsible FAQ (Yoast FAQ compatible) */
-.schema-faq {
-  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
-}
-
 .schema-faq-section {
   border: 1px solid #e5e7eb;
   border-radius: 12px;
@@ -354,7 +347,6 @@
 /* Client review slider */
 .cr-slider-wrapper,
 .cr-slider-wrapper * {
-    font-family: 'Inter', sans-serif;
     box-sizing: border-box;
 }
 
@@ -658,11 +650,7 @@
    Prefix: body.single-post
 ================================== */
 body.post-template .wp-block-post-title {
-    font-family: inherit;
     color: #000;
-}
-.swr-single-post-content * {
-    font-family: inherit;
 }
 .swr-single-post-content{
     margin:40px auto;
