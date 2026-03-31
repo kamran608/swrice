@@ -1044,7 +1044,7 @@ class UAGB_Init_Blocks {
 	 * Replaces version-specific body classes (version-6-9, version-6-9-1)
 	 * with a single class that persists across future WordPress updates.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.22
 	 *
 	 * @param string $classes Admin body classes.
 	 * @return string Modified admin body classes.
