@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.tbs-wrap { font-family: 'Poppins', sans-serif; max-width: 1160px; color: #1e293b; }
+.tbs-wrap * { box-sizing: border-box; }
+
+/* ── HEADER ─────────────────────────────────────── */
+.tbs-header {
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(135deg, #0f2850 0%, #1a56a0 100%);
+    padding: 24px 32px; border-radius: 0 0 16px 16px;
+    margin-bottom: 28px; flex-wrap: wrap; gap: 16px;
+}
+.tbs-header-logo { display: flex; align-items: center; gap: 14px; }
+.tbs-logo-icon   { font-size: 36px; }
+.tbs-header-logo h1 { font-size: 22px; font-weight: 700; color: #fff; margin: 0 0 4px; }
+.tbs-header-logo p  { font-size: 13px; color: rgba(255,255,255,.6); margin: 0; }
+
+.tbs-shortcode-box {
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+    border-radius: 10px; padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.tbs-shortcode-box label { font-size: 12px; color: rgba(255,255,255,.7); font-weight: 500; }
+.tbs-shortcode-box code  { background: rgba(0,0,0,.25); color: #86efac; padding: 5px 12px; border-radius: 6px; font-size: 14px; font-family: monospace; }
+.tbs-copy-btn {
+    background: #1dbf73; color: #fff; border: none;
+    padding: 6px 14px; border-radius: 7px; font-size: 12px;
+    font-weight: 600; cursor: pointer; transition: background .2s;
+    font-family: 'Poppins', sans-serif;
+}
+.tbs-copy-btn:hover { background: #17a362; }
+
+/* ── NOTICE ─────────────────────────────────────── */
+.tbs-notice {
+    background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534;
+    padding: 12px 16px; border-radius: 8px; font-size: 14px;
+    font-weight: 500; margin-bottom: 20px;
+}
+
+/* ── LAYOUT ─────────────────────────────────────── */
+.tbs-layout { display: grid; grid-template-columns: 210px 1fr; gap: 24px; padding-bottom: 40px; }
+
+/* ── SIDEBAR ────────────────────────────────────── */
+.tbs-sidebar { display: flex; flex-direction: column; gap: 4px; }
+.tbs-nav-link {
+    display: block; padding: 10px 16px; border-radius: 9px;
+    font-size: 13px; font-weight: 500; color: #475569;
+    text-decoration: none; transition: all .18s; border: 1px solid transparent;
+}
+.tbs-nav-link:hover  { background: #f1f5f9; color: #1e293b; }
+.tbs-nav-link.active { background: #1a56a0; color: #fff; border-color: #1a56a0; box-shadow: 0 3px 10px rgba(26,86,160,.25); }
+
+/* ── MAIN ───────────────────────────────────────── */
+.tbs-tab-title { font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+
+/* ── CARD ───────────────────────────────────────── */
+.tbs-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.tbs-card-title { font-size: 14px; font-weight: 700; color: #1a56a0; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid #f1f5f9; }
+
+/* ── FIELD ──────────────────────────────────────── */
+.tbs-field { margin-bottom: 16px; }
+.tbs-field label { display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px; }
+.tbs-field input[type="text"],
+.tbs-field input[type="url"],
+.tbs-field textarea {
+    width: 100%; padding: 9px 13px;
+    border: 1.5px solid #e2e8f0; border-radius: 8px;
+    font-size: 14px; font-family: 'Poppins', sans-serif;
+    color: #1e293b; background: #fafafa; transition: border-color .18s, box-shadow .18s;
+}
+.tbs-field input:focus,
+.tbs-field textarea:focus { outline: none; border-color: #1a56a0; box-shadow: 0 0 0 3px rgba(26,86,160,.12); background: #fff; }
+.tbs-field textarea     { resize: vertical; min-height: 80px; }
+.tbs-html-field         { font-family: monospace !important; font-size: 13px !important; background: #f8f9fa !important; }
+.tbs-desc               { font-size: 11.5px; color: #94a3b8; margin: 4px 0 0; }
+
+/* ── INLINE ROW ─────────────────────────────────── */
+.tbs-inline-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
+.tbs-inline-row input {
+    padding: 8px 11px; border: 1.5px solid #e2e8f0;
+    border-radius: 8px; font-size: 13px;
+    font-family: 'Poppins', sans-serif; background: #fafafa; flex: 1;
+}
+.tbs-inline-row input:focus { outline: none; border-color: #1a56a0; box-shadow: 0 0 0 3px rgba(26,86,160,.12); }
+
+/* ── SERVICE ROW ────────────────────────────────── */
+.tbs-service-row { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.tbs-service-row input { padding: 8px 11px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 13px; font-family: 'Poppins', sans-serif; background: #fff; }
+.tbs-service-row input:focus { outline: none; border-color: #1a56a0; }
+
+/* ── SAVE BAR ───────────────────────────────────── */
+.tbs-save-bar {
+    position: sticky; bottom: 0;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(10px);
+    border-top: 1px solid #e2e8f0; padding: 16px 0 12px;
+    display: flex; align-items: center; gap: 16px; margin-top: 8px; z-index: 100;
+}
+.tbs-save-btn {
+    background: linear-gradient(135deg, #1dbf73, #17a362); color: #fff;
+    border: none; padding: 12px 28px; border-radius: 10px;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 14px rgba(29,191,115,.35); transition: all .2s;
+}
+.tbs-save-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(29,191,115,.4); }

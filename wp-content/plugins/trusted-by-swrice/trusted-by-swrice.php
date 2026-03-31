@@ -1,21 +1,21 @@
 <?php
 /**
- * Plugin Name: Trusted by SVRICE
- * Plugin URI:  https://svrice.com
+ * Plugin Name: Trusted by SWRICE
+ * Plugin URI:  https://swrice.com
  * Description: A fully customizable Trust & Reviews page builder with shortcode support. Edit every section, text, button and color from WordPress admin.
  * Version:     1.0.0
- * Author:      SVRICE
- * Author URI:  https://svrice.com
+ * Author:      SWRICE
+ * Author URI:  https://swrice.com
  * License:     GPL v2 or later
- * Text Domain: trusted-by-svrice
+ * Text Domain: trusted-by-swrice
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'TBS_VERSION',  '1.0.0' );
+define( 'TBS_VERSION',    '1.0.0' );
 define( 'TBS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'TBS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'TBS_OPTION_KEY', 'tbs_settings' );
+define( 'TBS_OPTION_KEY', 'tbs_swrice_settings' );
 
 require_once TBS_PLUGIN_DIR . 'includes/defaults.php';
 require_once TBS_PLUGIN_DIR . 'includes/helpers.php';

@@ -4,11 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function tbs_get_defaults() {
     return [
 
-        /* ── NAV ─────────────────────────────── */
-        'nav_logo_text'        => 'SVRICE',
-        'nav_linkedin_url'     => '#',
-        'nav_twitter_url'      => '#',
-
         /* ── HERO ────────────────────────────── */
         'hero_eyebrow'         => '100+ Verified Client Reviews',
         'hero_heading'         => 'Trusted by Clients Worldwide',
@@ -171,8 +166,5 @@ function tbs_get_defaults() {
         'cta_btn3_text'        => '✓ Hire on Fiverr',
         'cta_btn3_url'         => '#',
         'cta_note'             => '🔒 Secure payments via Fiverr · ⚡ Fast response · ✓ Satisfaction guaranteed',
-
-        /* ── FOOTER ──────────────────────────── */
-        'footer_text'          => '© 2024 SVRICE · WordPress & LearnDash Expert Developer',
     ];
 }

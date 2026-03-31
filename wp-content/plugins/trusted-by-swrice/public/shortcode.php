@@ -1,13 +1,29 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-add_shortcode( 'trust_by_svrice', 'tbs_render_shortcode' );
+add_shortcode( 'trust_by_swrice', 'tbs_render_shortcode' );
 
 function tbs_render_shortcode() {
     $s = tbs_get_all();
 
-    wp_enqueue_style(  'tbs-public-css', TBS_PLUGIN_URL . 'public/css/tbs-public.css', [], TBS_VERSION );
-    wp_enqueue_script( 'tbs-public-js',  TBS_PLUGIN_URL . 'public/js/tbs-public.js',  [], TBS_VERSION, true );
+    /*
+     * Enqueue CSS & JS here — inside the shortcode callback.
+     * WordPress will only load these files on the page(s)
+     * where the shortcode is actually used.
+     */
+    wp_enqueue_style(
+        'tbs-public-css',
+        TBS_PLUGIN_URL . 'public/css/tbs-public.css',
+        [],
+        TBS_VERSION
+    );
+    wp_enqueue_script(
+        'tbs-public-js',
+        TBS_PLUGIN_URL . 'public/js/tbs-public.js',
+        [],
+        TBS_VERSION,
+        true   /* load in footer */
+    );
 
     ob_start();
     ?>
@@ -17,7 +33,7 @@ function tbs_render_shortcode() {
     <section class="tbs-hero">
         <div class="tbs-container">
             <div class="tbs-hero-inner">
-                <div class="tbs-hero-left">
+                <div>
                     <div class="tbs-eyebrow-badge tbs-fade">
                         <span class="tbs-pulse-dot"></span>
                         <?php echo esc_html( $s['hero_eyebrow'] ); ?>
@@ -96,7 +112,7 @@ function tbs_render_shortcode() {
     </section>
 
     <!-- ══ REVIEWS ═══════════════════════════════════ -->
-    <section class="tbs-reviews" id="tbs-reviews">
+    <section class="tbs-reviews">
         <div class="tbs-container">
             <div class="tbs-sec-header tbs-fade">
                 <div class="tbs-sec-eyebrow"><?php echo esc_html( $s['reviews_eyebrow'] ); ?></div>
@@ -152,7 +168,7 @@ function tbs_render_shortcode() {
     </div>
 
     <!-- ══ TESTIMONIALS ══════════════════════════════ -->
-    <section class="tbs-testimonials" id="tbs-testimonials">
+    <section class="tbs-testimonials">
         <div class="tbs-container">
             <div class="tbs-sec-header tbs-fade">
                 <div class="tbs-sec-eyebrow"><?php echo esc_html( $s['testi_eyebrow'] ); ?></div>
@@ -192,10 +208,10 @@ function tbs_render_shortcode() {
     </section>
 
     <!-- ══ TECH & SERVICES ═══════════════════════════ -->
-    <section class="tbs-tech" id="tbs-services">
+    <section class="tbs-tech">
         <div class="tbs-container">
             <div class="tbs-sec-header tbs-fade">
-                <div class="tbs-sec-eyebrow">🛠 Technologies & Services</div>
+                <div class="tbs-sec-eyebrow">🛠 Technologies &amp; Services</div>
                 <h2><?php echo esc_html( $s['tech_heading'] ); ?></h2>
                 <p><?php echo esc_html( $s['tech_subtext'] ); ?></p>
             </div>
@@ -238,7 +254,7 @@ function tbs_render_shortcode() {
     </section>
 
     <!-- ══ CTA ═══════════════════════════════════════ -->
-    <section class="tbs-cta" id="tbs-contact">
+    <section class="tbs-cta">
         <div class="tbs-container tbs-cta-inner">
             <div class="tbs-cta-logos tbs-fade">
                 <div class="tbs-cta-logo"><span class="tbs-cta-logo-icon">🔷</span> WordPress</div>
@@ -258,21 +274,11 @@ function tbs_render_shortcode() {
                     <?php echo esc_html( $s['cta_btn3_text'] ); ?>
                 </a>
             </div>
+            <?php if ( ! empty( $s['cta_note'] ) ) : ?>
             <div class="tbs-cta-note tbs-fade"><?php echo esc_html( $s['cta_note'] ); ?></div>
+            <?php endif; ?>
         </div>
     </section>
-
-    <!-- ══ FOOTER ════════════════════════════════════ -->
-    <footer class="tbs-footer">
-        <div class="tbs-container">
-            <div class="tbs-footer-inner">
-                <div class="tbs-footer-logo">
-                    <span class="tbs-logo-s"><?php echo esc_html( substr( $s['nav_logo_text'], 0, 1 ) ); ?></span><?php echo esc_html( substr( $s['nav_logo_text'], 1 ) ); ?>
-                </div>
-                <div class="tbs-footer-copy"><?php echo esc_html( $s['footer_text'] ); ?></div>
-            </div>
-        </div>
-    </footer>
 
     </div><!-- .tbs-page -->
     <?php
