@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Swrice Contact Form
+Plugin Name: Swrice Contact Form 1.1
 Description: Lightweight contact form with AJAX, admin panel, and floating labels.
 Version: 1.1
 Author: Swrice
@@ -75,36 +75,63 @@ add_action('wp_ajax_swr_contact_submit', 'swr_contact_submit');
 add_action('wp_ajax_nopriv_swr_contact_submit', 'swr_contact_submit');
 
 function swr_contact_submit() {
+    
     global $wpdb;
+
     $table = $wpdb->prefix . 'swr_contact_entries';
-
-    $name = sanitize_text_field($_POST['name']);
-    $email = sanitize_email($_POST['email']);
-    $reason = sanitize_text_field($_POST['reason']);
-    $message = sanitize_textarea_field($_POST['message']);
-    $wpdb->insert($table, compact('name', 'email', 'reason', 'message'));
-
-    $admin_email = get_option('admin_email');
-    $subject = "SWR Contact Form Submission - $reason";
-    $body = "You've received a new message via the SWR contact form:\n\n" .
-            "Name: $name\n" .
-            "Email: $email\n" .
-            "Reason: $reason\n" .
-            "Message:\n$message\n";
-
-    $headers = array(
-        'Content-Type: text/plain; charset=UTF-8',
-        'From: SWR Contact <noreply@swrice.com>'
+    
+    $name    = isset($_POST['name']) ? sanitize_text_field($_POST['name']) : '';
+    $email   = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+    $reason  = isset($_POST['reason']) ? sanitize_text_field($_POST['reason']) : '';
+    $message = isset($_POST['message']) ? sanitize_textarea_field($_POST['message']) : '';
+    
+    if ( empty($name) || empty($email) || empty($message) ) {
+        wp_send_json_error('Please fill all required fields.');
+    }
+    
+    if ( ! is_email($email) ) {
+        wp_send_json_error('Invalid email address.');
+    }
+    
+    $inserted = $wpdb->insert(
+        $table,
+        [
+            'name'    => $name,
+            'email'   => $email,
+            'reason'  => $reason,
+            'message' => $message
+        ],
+        ['%s', '%s', '%s', '%s']
     );
-
+    
+    if ( false === $inserted ) {
+        wp_send_json_error('Something went wrong while saving data.');
+    }
+    
+    $admin_email = get_option('admin_email');
+    
+    $subject = sprintf('SWR Contact Form: %s', $reason ?: 'New Message');
+    
+    $body = sprintf(
+        "New contact form submission:\n\nName: %s\nEmail: %s\nReason: %s\n\nMessage:\n%s",
+        $name,
+        $email,
+        $reason ?: 'N/A',
+        $message
+    );
+    
+    $headers = [
+        'Content-Type: text/plain; charset=UTF-8',
+        'Reply-To: ' . $name . ' <' . $email . '>',
+    ];
+    
     $mail_sent = wp_mail($admin_email, $subject, $body, $headers);
-
-    if ($mail_sent) {
+    
+    if ( $mail_sent ) {
         wp_send_json_success("Thanks! We'll get back to you soon.");
     } else {
-        wp_send_json_error("Failed to send email. Please try again later.");
+        wp_send_json_error("Saved successfully, but email failed to send.");
     }
-    die();
 }
 
 // Create table on activation
