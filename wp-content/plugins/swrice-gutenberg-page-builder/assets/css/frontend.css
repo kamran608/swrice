@@ -137,6 +137,8 @@
     display: flex;
     gap: 14px;
     margin-top: 6px;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 /* Hero Pricing Section - Complete Design */
@@ -221,6 +223,7 @@
     color: #f97316;
     font-weight: 700;
     padding: 12px 40px;
+    width: max-content;
     border-radius: 999px;
     font-size: 18px;
     letter-spacing: 0.2px;
@@ -1319,7 +1322,7 @@
     }
 	.sppm-hero-ctas {
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-around;
     }
 }
 
