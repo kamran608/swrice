@@ -98,6 +98,9 @@ class Swrice_Functionality {
         if( file_exists( SWR_INCLUDES_DIR.'plugin-post-list.php' ) ) {
             require SWR_INCLUDES_DIR.'plugin-post-list.php';
         }
+        if( file_exists( SWR_INCLUDES_DIR.'admin-notices.php' ) ) {
+            require SWR_INCLUDES_DIR.'admin-notices.php';
+        }
         
         // Pages mein Categories add karne ke liye
         function add_categories_to_pages() {
@@ -149,6 +152,5 @@ class Swrice_Functionality {
 
 
 return Swrice_Functionality::instance();
-
 
 
