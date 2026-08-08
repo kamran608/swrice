@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class Admin_Notices
+ * Class Swrice_Admin_Notices
  */
-class Admin_Notices {
+class Swrice_Admin_Notices {
 
 	/**
 	 * @var self
@@ -25,7 +25,7 @@ class Admin_Notices {
 	 */
 	public static function instance() {
 
-		if ( is_null( self::$instance ) && ! ( self::$instance instanceof Admin_Notices ) ) {
+		if ( is_null( self::$instance ) && ! ( self::$instance instanceof Swrice_Admin_Notices ) ) {
 			self::$instance = new self();
 
 			self::$instance->hooks();
@@ -53,4 +53,4 @@ class Admin_Notices {
 	}
 }
 
-return Admin_Notices::instance();
+return Swrice_Admin_Notices::instance();
