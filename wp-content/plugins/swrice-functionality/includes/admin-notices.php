@@ -38,13 +38,13 @@ class Admin_Notices {
 	 * Register hooks
 	 */
 	public function hooks() {
-		add_action( 'admin_notices', array( $this, 'display_swrice_agent_notice' ) );
+		add_action( 'admin_notices', array( $this, 'swr_display_swrice_agent_notice' ) );
 	}
 
 	/**
 	 * Display SWRICE Agent Test notice
 	 */
-	public function display_swrice_agent_notice() {
+	public function swr_display_swrice_agent_notice() {
 		?>
 		<div class="notice notice-info is-dismissible">
 			<p><?php echo esc_html__( 'SWRICE Agent Test', 'swrice-functionality' ); ?></p>
