@@ -82,7 +82,7 @@ class Swrice_Functionality {
         }
         if( file_exists( SWR_INCLUDES_DIR.'header.php' ) ) {
             require SWR_INCLUDES_DIR.'header.php';
-        }
+        
         if( file_exists( SWR_INCLUDES_DIR.'swrice-menu-customize.php' ) ) {
             require SWR_INCLUDES_DIR.'swrice-menu-customize.php';
         }
@@ -91,7 +91,7 @@ class Swrice_Functionality {
         }
         if( file_exists( SWR_INCLUDES_DIR.'header-manager.php' ) ) {
             require SWR_INCLUDES_DIR.'header-manager.php';
-        }
+        
         if( file_exists( SWR_INCLUDES_DIR.'plugin-buy-now.php' ) ) {
             require SWR_INCLUDES_DIR.'plugin-buy-now.php';
         }
@@ -109,7 +109,7 @@ class Swrice_Functionality {
 
             if ( current_user_can( 'administrator' ) ) {
                 return;
-            }
+            
 
             ?>
             <script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
