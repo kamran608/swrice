@@ -113,6 +113,15 @@ class Swrice_Functionality {
             <script>window.LogRocket && window.LogRocket.init('rmkh0u/swrice');</script>
             <?php
         } );
+
+        function swrice_load_poppins_font() {
+            wp_enqueue_style(
+                'swrice-poppins-font',
+                'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
+                false
+            );
+        }
+        add_action( 'wp_enqueue_scripts', 'swrice_load_poppins_font' );
     }
 }
 
