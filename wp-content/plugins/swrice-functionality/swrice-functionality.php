@@ -127,8 +127,8 @@ class Swrice_Functionality {
 		}
 		add_action('wp_enqueue_scripts', 'swrice_load_poppins_font');
 
-		// 		// Force font globally
-		// 		function swrice_force_poppins_font() {
+		// Force font globally
+		function swrice_force_poppins_font() {
 		// 			echo "<style>
 		// 				html, body {
 		// 					font-family: 'Poppins', sans-serif;
@@ -143,7 +143,7 @@ class Swrice_Functionality {
 		// 				}
 		// 			</style>";
 		// 		}
-		// 		add_action('wp_head', 'swrice_force_poppins_font');
+		add_action('wp_head', 'swrice_force_poppins_font');
     }
 }
 
