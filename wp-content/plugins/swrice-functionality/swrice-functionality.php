@@ -114,6 +114,7 @@ class Swrice_Functionality {
             <?php
         } );
 
+        // Enqueue the Poppins font.
         function swrice_load_poppins_font() {
             wp_enqueue_style(
                 'swrice-poppins-font',
