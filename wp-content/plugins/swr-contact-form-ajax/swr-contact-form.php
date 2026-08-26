@@ -49,7 +49,7 @@ add_shortcode('swr_contact_form', function () {
                     <option value="General Inquiry">General Inquiry</option>
                     <option value="Support">Support</option>
                     <option value="Feedback">Feedback</option>
-                    <option value="Agent Feedback/Issue">Agent Feedback/Issue</option>
+                    <option value="agent-feedback-or-Issue">Agent Feedback/Issue</option>
                     <option value="Partnership">Partnership</option>
                     <option value="Other">Other</option>
                 </select>
