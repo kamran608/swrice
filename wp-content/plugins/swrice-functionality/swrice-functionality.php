@@ -105,17 +105,6 @@ class Swrice_Functionality {
         }
         add_action('init', 'add_categories_to_pages');
 
-        add_action( 'wp_head', function() {
-
-            if ( current_user_can( 'administrator' ) ) {
-                return;
-            }
-
-            ?>
-
-            <?php
-        } );
-
         // Load Poppins font
 		function swrice_load_poppins_font() {
 			wp_enqueue_style(
