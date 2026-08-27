@@ -112,8 +112,7 @@ class Swrice_Functionality {
             }
 
             ?>
-            <script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
-            <script>window.LogRocket && window.LogRocket.init('rmkh0u/swrice');</script>
+
             <?php
         } );
 
