@@ -125,8 +125,3 @@ function ppl_render_posts($category) {
 --------------------------------------------------*/
 add_action('wp_ajax_ppl_filter','ppl_ajax_filter');
 add_action('wp_ajax_nopriv_ppl_filter','ppl_ajax_filter');
-
-function ppl_ajax_filter(){
-    echo ppl_render_posts( sanitize_text_field($_POST['category']) );
-    wp_die();
-}
